@@ -82,22 +82,34 @@ if (scrollTopBtn) {
 
 window.addEventListener('scroll', toggleScrollTop);
 
-// Portfolio data
-const PORTFOLIO_ITEMS = [
-    { category: "web", image: "./images/res1.jpeg" },
-    { category: "web", image: "./images/res2.jpeg" },
-    { category: "web", image: "./images/res3.jpeg" },
-    { category: "web", image: "./images/res4.jpeg" },
-    { category: "web", image: "./images/res5.jpeg" },
-    { category: "web", image: "./images/res6.jpeg" },
-    { category: "shopify", image: "./images/kidulan1.jpeg" },
-    { category: "shopify", image: "./images/kidulan2.jpeg" },
-    { category: "shopify", image: "./images/kidulan3.jpeg" },
-    { category: "shopify", image: "./images/kidulan4.jpeg" },
-    { category: "shopify", image: "./images/kidulan5.jpeg" },
-    { category: "shopify", image: "./images/hb1.jpeg" },
-    { category: "shopify", image: "./images/hb2.jpg" },
-   
+// Portfolio data grouped by project
+window.PROJECTS = [
+    {
+        id: "kidulan",
+        name: "Kidulan.com Headless E-commerce",
+        category: "shopify",
+        thumbnail: "./images/kidulan1.jpeg",
+        description: "Developed the Kidulan.com e-commerce website using a headless commerce architecture with Shopify, Hydrogen, and Sanity CMS. Connected Shopify product data with dynamic Sanity content using Sanity Connect.",
+        techStack: ["Shopify", "Hydrogen", "Sanity CMS", "React", "JavaScript", "TypeScript"],
+        functionality: [
+            "Developed the Kidulan.com homepage using Hydrogen",
+            "Integrated Sanity CMS for dynamic homepage content",
+            "Created and managed Sanity schemas and structured content",
+            "Implemented slug-based content handling",
+            "Connected Shopify commerce data with Sanity",
+            "Integrated Sanity content with the Hydrogen storefront",
+            "Created reusable and dynamic homepage sections",
+            "Combined CMS-managed content with Shopify product data",
+            "Built a flexible headless architecture for content updates"
+        ],
+        images: [
+            "./images/kidulan1.jpeg", 
+            "./images/kidulan2.jpeg", 
+            "./images/kidulan3.jpeg", 
+            "./images/kidulan4.jpeg", 
+            "./images/kidulan5.jpeg"
+        ]
+    }
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -111,22 +123,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function renderPortfolioItems(category = 'all') {
         const filtered = category === 'all' 
-            ? PORTFOLIO_ITEMS 
-            : PORTFOLIO_ITEMS.filter(item => item.category === category);
+            ? window.PROJECTS 
+            : window.PROJECTS.filter(item => item.category === category);
         
-        console.log('Rendering', filtered.length, 'items for category:', category);
+        console.log('Rendering', filtered.length, 'projects for category:', category);
         
-        portfolioGrid.innerHTML = filtered.map(item => `
-            <div class="portfolio-card">
-                <img 
-                    src="${item.image}" 
-                    alt="Portfolio image" 
-                    loading="lazy"
-                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'; console.error('Failed to load:', '${item.image}');"
-                    onload="console.log('Loaded:', '${item.image}')"
-                    style="width:100%; height:100%; object-fit:cover; display:block;"
-                >
-            </div>
+        portfolioGrid.innerHTML = filtered.map((item, index) => `
+            <a href="project-details?id=${item.id}" class="portfolio-card">
+                <div class="portfolio-image-wrapper">
+                    <span class="portfolio-number">0${index + 1}</span>
+                    <img 
+                        src="${item.thumbnail}" 
+                        alt="${item.name}" 
+                        loading="lazy"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'; console.error('Failed to load:', '${item.thumbnail}');"
+                    >
+                </div>
+                <div class="portfolio-content">
+                    <h4 class="portfolio-title">${item.name}</h4>
+                    <p class="portfolio-desc">${item.description.length > 80 ? item.description.substring(0, 80) + '...' : item.description}</p>
+                    <div class="portfolio-link">View Project &rarr;</div>
+                </div>
+            </a>
         `).join('');
     }
     
@@ -328,80 +346,42 @@ toggle.addEventListener('change', function () {
     }
 });
 
-// ========== SMOOTH SCROLL ANIMATIONS - PLAYS EVERY TIME ==========
-document.addEventListener('DOMContentLoaded', function() {
-    // Add animation classes to ALL sections and important elements
-    const sections = document.querySelectorAll('section, .section-title-wrap, .about-grid, .stats-grid-squares, .skills-image-grid, .resume-grid, .services-grid-2x3, .contact-flex');
+// ========== STATS COUNTER ANIMATION ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.counter');
     
-    sections.forEach(section => {
-        section.classList.add('fade-up');
-    });
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
     
-    // Add stagger animation to grids
-    const grids = document.querySelectorAll('.stats-grid-squares, .skills-image-grid, .portfolio-grid, .services-grid-2x3');
-    grids.forEach(grid => {
-        grid.classList.add('stagger');
-    });
-    
-    // Function to check if element is in viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        
-        // Element is considered visible when it's within the viewport
-        return (
-            rect.top <= windowHeight - 100 && 
-            rect.bottom >= 50
-        );
-    }
-    
-    // Function to handle scroll animation - TRIGGERS EVERY TIME
-    function handleScrollAnimation() {
-        // Get all elements with animation classes
-        const animatedElements = document.querySelectorAll('.fade-up, .fade-down, .fade-left, .fade-right, .stagger');
-        
-        animatedElements.forEach(element => {
-            if (isInViewport(element)) {
-                element.classList.add('aos-animate');
-            } else {
-                // Remove the class when out of viewport so it animates again when scrolling back
-                element.classList.remove('aos-animate');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60 FPS
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+                observer.unobserve(counter); // Only animate once
             }
         });
-    }
+    }, observerOptions);
     
-    // Initial check
-    handleScrollAnimation();
-    
-    // Throttle function for better performance
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-    
-    // Listen for scroll events with throttle (every 100ms)
-    window.addEventListener('scroll', throttle(handleScrollAnimation, 100));
-    
-    // Also check on resize
-    window.addEventListener('resize', throttle(handleScrollAnimation, 100));
-    
-    // Optional: For super smooth performance, use requestAnimationFrame
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleScrollAnimation();
-                ticking = false;
-            });
-            ticking = true;
-        }
+    counters.forEach(counter => {
+        observer.observe(counter);
     });
 });
+

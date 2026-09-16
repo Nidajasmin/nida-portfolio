@@ -1,0 +1,55 @@
+## Kidulan.com — Headless E-commerce Website
+
+**Tech Stack:** Shopify, Hydrogen, Sanity CMS, React, JavaScript/TypeScript
+
+Developed the **Kidulan.com e-commerce website** using a headless commerce architecture with **Shopify, Hydrogen, and Sanity CMS**.
+
+### Sanity CMS Integration
+
+Used **Sanity CMS** to manage the website's structured content and dynamic homepage sections. The CMS allows content editors to update homepage content without making changes directly to the frontend code.
+
+Created reusable Sanity content schemas for sections such as:
+
+* Hero banners
+* Promotional sections
+* Featured content
+* Product-related content
+* Images and media
+* Text and descriptions
+* Custom homepage sections
+* SEO-related content
+
+Implemented **slug-based content routing** in Sanity, allowing content to be identified and queried using unique URL-friendly slugs. Sanity's slug field is designed specifically for generating unique URL values and can be queried through `slug.current`.
+
+### Shopify + Sanity Connection
+
+Connected the Shopify store with Sanity using **Sanity Connect**. Shopify remains the source for commerce-related information such as products, variants, collections, pricing, and availability, while Sanity provides an additional content layer for editorial and marketing content.
+
+The integration allows Shopify product and collection data to be synchronized into the Sanity Content Lake, where additional content can be associated with the commerce data.
+
+### Hydrogen Storefront
+
+Built the frontend using **Shopify Hydrogen**, Shopify's framework for developing custom headless storefronts.
+
+Hydrogen communicates with Shopify to retrieve commerce data while also fetching structured content from Sanity. This makes it possible to combine Shopify's e-commerce functionality with Sanity's flexible CMS capabilities in a single storefront.
+
+The architecture can be summarized as:
+
+**Sanity CMS → Content & Homepage Management**
+**Shopify → Products, Collections & Commerce Data**
+**Hydrogen → Custom Storefront & UI**
+**Sanity Connect → Shopify ↔ Sanity Synchronization**
+
+Used the Sanity/Hydrogen integration to fetch Sanity content directly within the Hydrogen application and combine CMS content with Shopify storefront data.
+
+### Key Responsibilities
+
+* Developed the Kidulan.com homepage using Hydrogen.
+* Integrated Sanity CMS for dynamic homepage content.
+* Created and managed Sanity schemas and structured content.
+* Implemented slug-based content handling.
+* Connected Shopify commerce data with Sanity.
+* Integrated Sanity content with the Hydrogen storefront.
+* Created reusable and dynamic homepage sections.
+* Combined CMS-managed content with Shopify product data.
+* Built a flexible headless architecture that allows content updates without modifying frontend code. 
