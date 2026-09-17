@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <!-- Use existing styles plus specific project detail styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="project-details.css">
+</head>
+<body class="project-details-page">
+
+    <!-- Header for Back Button -->
+    <header class="details-header">
+        <a href="index.html#portfolio" class="back-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Portfolio
+        </a>
+    </header>
+
+    <main class="details-container">
+        <!-- Error Message (hidden by default) -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <h2>Project Not Found</h2>
+            <p>Sorry, we couldn't find the details for this project.</p>
+        </div>
+
+        <!-- Dynamic Content Area -->
+        <div id="projectContent" style="display: none;">
+            
+            <!-- Title & Basic Info -->
+            <div class="project-header fade-up aos-animate">
+                <h1 id="projectName" class="project-title"></h1>
+                <p id="projectCategory" class="project-category"></p>
+                <p id="projectDescription" class="project-description"></p>
+            </div>
+
+            <!-- Tech Stack & Functionality Grid -->
+            <div class="project-meta-grid stagger aos-animate">
+                <div class="meta-card">
+                    <h3>Technologies Used</h3>
+                    <ul id="projectTechStack" class="tags-list"></ul>
+                </div>
+                <div class="meta-card">
+                    <h3>Key Functionalities</h3>
+                    <ul id="projectFunctionality" class="feature-list"></ul>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="project-gallery-section">
+                <h3>Project Gallery</h3>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev-btn" aria-label="Previous">❮</button>
+                    <div id="projectGallery" class="carousel-track"></div>
+                    <button class="carousel-btn next-btn" aria-label="Next">❯</button>
+                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Load the shared portfolio data, then the details logic -->
+    <script src="portfolio.js"></script>
+    <script src="project-details.js"></script>
+</body>
+</html>
