@@ -384,4 +384,25 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(counter);
     });
 });
+
+// ========== AOS ANIMATION INITIALIZATION ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.fade-up, .fade-down, .fade-left, .fade-right, .stagger');
+    
+    const animationObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    });
+
+    animatedElements.forEach(el => {
+        animationObserver.observe(el);
+    });
+});
 
