@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nida Jasmin KP - Shopify & Full Stack Developer</title>
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/portfolio.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -97,7 +97,7 @@
                                     <polyline points="7 7 17 7 17 17"></polyline>
                                 </svg>
                             </a>
-                            <a href="%PUBLIC_URL%/Nida jasmin kp_PYTHON DEV.pdf.pdf" download="Nida_Jasmin_CV.pdf"
+                            <a href="%PUBLIC_URL%/Nida_Jasmin_KP_CV.pdf" download="Nida_Jasmin_CV.pdf"
                                 class="btn-secondary" target="_blank">
                                 Download CV
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -349,6 +349,15 @@
                         </div>
                         <P>REACT</P>
                     </div>
+
+                    <!-- Flutter -->
+                    <div class="skill-image-card">
+                        <div class="skill-image-wrapper">
+                            <img src="%PUBLIC_URL%/flutter.png" alt="Flutter" class="skill-image"
+                                style="width: 35px; height: 35px; object-fit: contain;">
+                        </div>
+                        <P>FLUTTER</P>
+                    </div>
                 </div>
 
                 <!-- Tools Grid (Hidden by default) -->
@@ -479,14 +488,11 @@
                             <span class="resume-date">Present (10+ Months)</span>
                             <p class="resume-location">Seamedia E-Commerce Solution, Kinfra Techno Park</p>
                             <ul>
-                                <li>Developing and customizing Shopify stores using Liquid, Hydrogen, and modern
-                                    frontend technologies.</li>
-                                <li>Building collection-based custom Shopify applications and enhancing store
-                                    performance.</li>
-                                <li>Worked on Flutter to develop cross-platform mobile application features and user interfaces.</li>
-                                <li>Implementing responsive UI designs and optimizing user experience.</li>
-                                <li>Collaborating with design and marketing teams to deliver scalable e-commerce
-                                    solutions.</li>
+                                <li>Developed a headless e-commerce store (Kidulan.com) using Shopify, Hydrogen, Sanity CMS, and React.</li>
+                                <li>Built the Smart Collection & Merchandising Manager for Shopify using React 18, Node.js, Prisma, and PostgreSQL.</li>
+                                <li>Contributed to Enrixa Store, integrating React, Node.js, Razorpay, Shiprocket, and AI features to help businesses set up online stores quickly.</li>
+                                <li>Worked on ADPH WINS, a cross-platform mobile app for infant health tracking using Flutter, Dart, Riverpod, and Firebase.</li>
+                                <li>Collaborated with design and marketing teams to deliver scalable, high-performance e-commerce solutions.</li>
                             </ul>
                         </div>
                         <div class="resume-item">
@@ -529,7 +535,7 @@
                     <button class="filter-btn active" data-filter="all">ALL</button>
                     <button class="filter-btn" data-filter="web">WEB APPS</button>
                     <button class="filter-btn" data-filter="shopify">SHOPIFY</button>
-                    <button class="filter-btn" data-filter="ai">AI PROJECTS</button>
+                    <button class="filter-btn" data-filter="mobile">MOBILE APPS</button>
                 </div>
                 <div class="portfolio-grid" id="portfolioGrid">
                     <!-- Portfolio items will be populated by JavaScript -->
@@ -681,7 +687,7 @@
         </button>
     </div>
 
-    <script src="portfolio.js"></script>
+    <script src="%PUBLIC_URL%/portfolio.js"></script>
 </body>
 
 </html>

@@ -48,7 +48,7 @@ function highlightActiveSection() {
                 link.classList.remove('active');
                 const icon = link.querySelector('.nav-icon');
                 if (icon) icon.classList.remove('active');
-                
+
                 if (link.getAttribute('href') === `#${sectionId}`) {
                     link.classList.add('active');
                     const activeIcon = link.querySelector('.nav-icon');
@@ -103,33 +103,138 @@ window.PROJECTS = [
             "Built a flexible headless architecture for content updates"
         ],
         images: [
-            "./images/kidulan1.jpeg", 
-            "./images/kidulan2.jpeg", 
-            "./images/kidulan3.jpeg", 
-            "./images/kidulan4.jpeg", 
+            "./images/kidulan1.jpeg",
+            "./images/kidulan2.jpeg",
+            "./images/kidulan3.jpeg",
+            "./images/kidulan4.jpeg",
             "./images/kidulan5.jpeg"
+        ]
+    },
+    {
+        id: "mobile-app-project",
+        name: "ADPH WINS - Infant Safety & Health Tracking",
+        category: "mobile",
+        thumbnail: "./Image (1).jpg",
+        description: "A comprehensive, cross-platform mobile application designed to assist parents and caregivers in managing infant health and safety. It serves as a central hub for critical alerts, developmental tracking, and educational resources.",
+        techStack: ["Flutter", "Dart", "Riverpod", "PostgreSQL", "Firebase"],
+        functionality: [
+            "In-Vehicle Child Safety Alert System using GPS and motion detection",
+            "Health & Developmental Tracking for vaccines and milestones",
+            "Real-Time Contextual Alerts for severe weather and product recalls",
+            "Educational Gamification with offline-persistent scoring",
+            "Advanced Notification Pipeline processing high-volume dispatches"
+        ],
+        images: [
+            "./Image (1).jpg",
+            "./Image (2).jpg",
+            "./Image (3).jpg",
+            "./Image (4).jpg",
+            "./Image (5).jpg",
+            "./Image (6).jpg",
+            "./Image (7).jpg",
+            "./Image (8).jpg",
+            "./Image (9).jpg",
+            "./Image (10).jpg",
+            "./Image (11).jpg",
+            "./Image (12).jpg",
+            "./Image (13).jpg",
+            "./Image (14).jpg",
+            "./Image (15).jpg",
+            "./Image (16).jpg",
+            "./Image (17).jpg",
+            "./Image (18).jpg",
+            "./Image (19).jpg"
+        ]
+    },
+    {
+        id: "enrixa-store",
+        name: "Enrixa Store",
+        category: "web",
+        thumbnail: "./e0.png",
+        description: "Enrixa Store helps any business open its own online store in minutes, with no technical skills needed. Everything is in one place: your products, payments, delivery, design and sales reports. Designed specifically for the Indian market.",
+        techStack: ["React", "Node.js", "Razorpay", "Shiprocket", "AI Integration", "Google Analytics"],
+        functionality: [
+            "Quick store setup with staff management and custom domain support",
+            "Comprehensive product management with AI-generated descriptions and stock tracking",
+            "Integrated payments via Razorpay (UPI, cards, net banking) and Cash on Delivery",
+            "Order management, shipping through Shiprocket, and automated email confirmations",
+            "Built-in AI design assistant (Genie) for live layout customization",
+            "Sales dashboard with Google Analytics integration and customer tracking"
+        ],
+        images: [
+            "./e0.png",
+            "./e1.png",
+            "./e2.png",
+            "./e3.png",
+            "./e4.png",
+            "./e5.png",
+            "./e6.png",
+            "./e7.png",
+            "./em1.png",
+            "./em2.png",
+            "./em3.png",
+            "./em4.jpeg",
+            "./em5.jpeg"
+
+
+
+        ]
+    },
+    {
+        id: "smart-collection-manager",
+        name: "Smart Collection & Merchandising Manager for Shopify",
+        category: "shopify",
+        thumbnail: "./a1.png",
+        description: "The Smart Collection Manager is a robust Shopify application built to automate visual merchandising for e-commerce stores. By leveraging real-time sales data and customizable rules, the app dynamically manages, creates, and sorts collections to maximize conversions. It intelligently promotes bestsellers, highlights new arrivals, and demotes out-of-stock inventory.",
+        techStack: [
+            "React 18", 
+            "Shopify Polaris", 
+            "Node.js", 
+            "PostgreSQL (Supabase)", 
+            "Prisma ORM", 
+            "Shopify App Bridge", 
+            "Vite", 
+            "TypeScript"
+        ],
+        functionality: [
+            "Automated Dynamic Collections (Bestsellers, Trending, New Arrivals, Aging Inventory)",
+            "Advanced Merchandising & Sorting Logic (OOS Demotion, New Product Promotion, Tag-Based Sorting)",
+            "Scheduled Product Featuring to pin and schedule products for marketing campaigns",
+            "Granular Store Settings with global exclusion rules and collection limits",
+            "Background Data Synchronization via Shopify Webhooks for continuous scoring",
+            "Seamless Integration running directly within the Shopify Admin via iframe"
+        ],
+        images: [
+            "./a1.png",
+            "./a2.png",
+            "./a3.png",
+            "./a4.png",
+            "./a5.png",
+            "./a6.png",
+            "./a7.png",
+            "./a8.png"
         ]
     }
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const portfolioGrid = document.getElementById('portfolioGrid');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    
+
     if (!portfolioGrid) {
         console.error('portfolioGrid element not found!');
         return;
     }
-    
+
     function renderPortfolioItems(category = 'all') {
-        const filtered = category === 'all' 
-            ? window.PROJECTS 
+        const filtered = category === 'all'
+            ? window.PROJECTS
             : window.PROJECTS.filter(item => item.category === category);
-        
+
         console.log('Rendering', filtered.length, 'projects for category:', category);
-        
+
         portfolioGrid.innerHTML = filtered.map((item, index) => `
-            <a href="project-details?id=${item.id}" class="portfolio-card">
+            <a href="project-details.html?id=${item.id}" onclick="this.href = window.location.protocol === 'file:' ? 'project-details.html?id=${item.id}' : '/nida-portfolio/project-details.html?id=${item.id}';" class="portfolio-card">
                 <div class="portfolio-image-wrapper">
                     <span class="portfolio-number">0${index + 1}</span>
                     <img 
@@ -147,9 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
             </a>
         `).join('');
     }
-    
+
     renderPortfolioItems();
-    
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -171,7 +276,7 @@ const hiddenIframe = document.getElementById('hidden_iframe');
 // Check if modal elements exist
 if (contactTriggerBtn && contactModal) {
     console.log('Contact modal elements found');
-    
+
     // Open modal
     contactTriggerBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -211,53 +316,53 @@ if (contactTriggerBtn && contactModal) {
 
     // Handle form submission - Show success then redirect to hero
     if (modalContactForm) {
-        modalContactForm.addEventListener('submit', function(e) {
+        modalContactForm.addEventListener('submit', function (e) {
             // Get elements
             const submitBtn = this.querySelector('button[type="submit"]');
             const modalHeader = document.querySelector('.modal-header');
             const originalHeader = modalHeader.innerHTML;
-            
+
             // Show loading
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
+
             // Listen for iframe load (form submission complete)
             if (hiddenIframe) {
-                hiddenIframe.onload = function() {
+                hiddenIframe.onload = function () {
                     // Form submitted successfully
-                    
+
                     // Show success message in modal
                     modalHeader.innerHTML = `
                         <h3 style="color: #b50629; margin-bottom: 10px;">✓ Message Sent Successfully!</h3>
                         <p style="color: #666;">Thank you for reaching out. Redirecting to home...</p>
                     `;
-                    
+
                     // Reset form
                     modalContactForm.reset();
-                    
+
                     // Wait 2 seconds to show success message, then redirect to hero section
                     setTimeout(() => {
                         // Close modal
                         closeModal();
-                        
+
                         // Restore original header for next time
                         modalHeader.innerHTML = originalHeader;
                         submitBtn.textContent = 'Send Message';
                         submitBtn.disabled = false;
-                        
+
                         // Redirect to hero section smoothly
                         document.getElementById('hero').scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
-                        
+
                     }, 2000); // 2 second delay to show success message
-                    
+
                     // Clear iframe src
                     hiddenIframe.src = 'about:blank';
                 };
             }
-            
+
             // Fallback timeout in case iframe doesn't trigger
             setTimeout(() => {
                 if (submitBtn.disabled) {
@@ -266,16 +371,16 @@ if (contactTriggerBtn && contactModal) {
                         <h3 style="color: #b50629; margin-bottom: 10px;">✓ Message Sent Successfully!</h3>
                         <p style="color: #666;">Thank you for contact</p>
                     `;
-                    
+
                     modalContactForm.reset();
-                    
+
                     // Wait 2 seconds then redirect
                     setTimeout(() => {
                         closeModal();
                         modalHeader.innerHTML = originalHeader;
                         submitBtn.textContent = 'Send Message';
                         submitBtn.disabled = false;
-                        
+
                         // Scroll to hero
                         document.getElementById('hero').scrollIntoView({
                             behavior: 'smooth',
@@ -310,52 +415,56 @@ const content = {
 };
 
 // Initial state
-skillsLabel.classList.add('active');
-sectionTitle.textContent = content.skills.title;
-sectionSubtitle.textContent = content.skills.subtitle;
+if (skillsLabel && sectionTitle && sectionSubtitle) {
+    skillsLabel.classList.add('active');
+    sectionTitle.textContent = content.skills.title;
+    sectionSubtitle.textContent = content.skills.subtitle;
+}
 
-toggle.addEventListener('change', function () {
-    if (toggle.checked) {
-        // Show Tools, hide Skills
-        setTimeout(() => {
-            toolsGrid.style.display = 'grid';
-            skillsGrid.style.display = 'none';
-            
-            // Update active labels
-            skillsLabel.classList.remove('active');
-            toolsLabel.classList.add('active');
-            
-            // Update section title and subtitle for Tools
-            sectionTitle.textContent = content.tools.title;
-            sectionSubtitle.textContent = content.tools.subtitle;
-        }, 200);
-    } else {
-        // Show Skills, hide Tools
-        setTimeout(() => {
-            skillsGrid.style.display = 'grid';
-            toolsGrid.style.display = 'none';
-            
-            // Update active labels
-            toolsLabel.classList.remove('active');
-            skillsLabel.classList.add('active');
-            
-            // Update section title and subtitle for Skills
-            sectionTitle.textContent = content.skills.title;
-            sectionSubtitle.textContent = content.skills.subtitle;
-        }, 200);
-    }
-});
+if (toggle) {
+    toggle.addEventListener('change', function () {
+        if (toggle.checked) {
+            // Show Tools, hide Skills
+            setTimeout(() => {
+                toolsGrid.style.display = 'grid';
+                skillsGrid.style.display = 'none';
+
+                // Update active labels
+                skillsLabel.classList.remove('active');
+                toolsLabel.classList.add('active');
+
+                // Update section title and subtitle for Tools
+                sectionTitle.textContent = content.tools.title;
+                sectionSubtitle.textContent = content.tools.subtitle;
+            }, 200);
+        } else {
+            // Show Skills, hide Tools
+            setTimeout(() => {
+                skillsGrid.style.display = 'grid';
+                toolsGrid.style.display = 'none';
+
+                // Update active labels
+                toolsLabel.classList.remove('active');
+                skillsLabel.classList.add('active');
+
+                // Update section title and subtitle for Skills
+                sectionTitle.textContent = content.skills.title;
+                sectionSubtitle.textContent = content.skills.subtitle;
+            }, 200);
+        }
+    });
+}
 
 // ========== STATS COUNTER ANIMATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.counter');
-    
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.5
     };
-    
+
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -363,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000; // 2 seconds
                 const increment = target / (duration / 16); // 60 FPS
-                
+
                 let current = 0;
                 const updateCounter = () => {
                     current += increment;
@@ -379,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
-    
+
     counters.forEach(counter => {
         observer.observe(counter);
     });
@@ -388,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========== AOS ANIMATION INITIALIZATION ==========
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.fade-up, .fade-down, .fade-left, .fade-right, .stagger');
-    
+
     const animationObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -405,4 +514,4 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(el);
     });
 });
-
+

@@ -121,8 +121,54 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
                 galleryTrack.scrollTo({ left: index * galleryTrack.clientWidth, behavior: 'smooth' });
+                
+                // Reset zoom on dot click
+                currentZoom = 1;
+                applyZoom();
             });
         });
+    }
+    
+    // Zoom Controls Logic
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    let currentZoom = 1;
+    const maxZoom = 3;
+    const minZoom = 1;
+    
+    function applyZoom() {
+        const images = document.querySelectorAll('.carousel-slide img');
+        images.forEach(img => {
+            if (currentZoom === 1) {
+                img.style.width = '100%';
+                img.style.maxHeight = '450px';
+                img.style.maxWidth = '100%';
+            } else {
+                img.style.width = `${currentZoom * 100}%`;
+                img.style.maxHeight = `${currentZoom * 450}px`;
+                img.style.maxWidth = 'none'; // allow it to grow larger than container
+            }
+        });
+    }
+
+    if (zoomInBtn && zoomOutBtn) {
+        zoomInBtn.addEventListener('click', () => {
+            if (currentZoom < maxZoom) {
+                currentZoom += 0.5;
+                applyZoom();
+            }
+        });
+        
+        zoomOutBtn.addEventListener('click', () => {
+            if (currentZoom > minZoom) {
+                currentZoom -= 0.5;
+                applyZoom();
+            }
+        });
+        
+        // Reset zoom when navigating arrows
+        if (prevBtn) prevBtn.addEventListener('click', () => { currentZoom = 1; applyZoom(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { currentZoom = 1; applyZoom(); });
     }
     
     // Show content
