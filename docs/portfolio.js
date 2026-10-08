@@ -299,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="portfolio-content">
                     <h4 class="portfolio-title">${item.name}</h4>
-                    <p class="portfolio-desc">${item.description.length > 80 ? item.description.substring(0, 80) + '...' : item.description}</p>
                     <div class="portfolio-link">View Project &rarr;</div>
                 </div>
             </a>
