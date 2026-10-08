@@ -115,14 +115,21 @@ window.PROJECTS = [
         name: "ADPH WINS - Infant Safety & Health Tracking",
         category: "mobile",
         thumbnail: "./Image (1).jpg",
-        description: "A comprehensive, cross-platform mobile application designed to assist parents and caregivers in managing infant health and safety. It serves as a central hub for critical alerts, developmental tracking, and educational resources.",
-        techStack: ["Flutter", "Dart", "Riverpod", "PostgreSQL", "Firebase"],
+        description: "A comprehensive, cross-platform mobile application designed to assist parents and caregivers in managing infant health and safety. The application serves as a central hub for critical alerts, developmental tracking, and educational resources. It is built to ensure high reliability for life-saving features like in-vehicle safety alerts and severe weather warnings, even when the app is running in the background.",
+        techStack: [
+            "Flutter (Dart)", 
+            "Riverpod", 
+            "PostgreSQL (Row Level Security)", 
+            "Firebase Cloud Messaging", 
+            "Serverless Edge Functions",
+            "WebSockets"
+        ],
         functionality: [
-            "In-Vehicle Child Safety Alert System using GPS and motion detection",
-            "Health & Developmental Tracking for vaccines and milestones",
-            "Real-Time Contextual Alerts for severe weather and product recalls",
-            "Educational Gamification with offline-persistent scoring",
-            "Advanced Notification Pipeline processing high-volume dispatches"
+            "In-Vehicle Child Safety Alert System: Dual-process background monitor using GPS and motion detection to prevent infants from being left in vehicles.",
+            "Health & Developmental Tracking: Complex vaccine scheduling logic and age-grouped milestone tracking with offline-first synchronization.",
+            "Real-Time Contextual Alerts: Integrates third-party APIs for precise severe weather warnings and automatic government product recall notices.",
+            "Educational Gamification: Interactive safety quizzes with points, leveling systems, and offline-persistent scoring.",
+            "Advanced Notification Pipeline: Merges events into a unified dashboard using concurrent WebSocket channels and processes high-volume dispatches via edge functions."
         ],
         images: [
             "./Image (1).jpg",
@@ -151,15 +158,24 @@ window.PROJECTS = [
         name: "Enrixa Store",
         category: "web",
         thumbnail: "./e0.png",
-        description: "Enrixa Store helps any business open its own online store in minutes, with no technical skills needed. Everything is in one place: your products, payments, delivery, design and sales reports. Designed specifically for the Indian market.",
-        techStack: ["React", "Node.js", "Razorpay", "Shiprocket", "AI Integration", "Google Analytics"],
+        description: "Enrixa Store helps any business open its own online store in minutes, with no technical skills needed. Everything is in one place: your products, payments, delivery, design and sales reports. Designed specifically for the Indian market, it provides everything you get to run your online store efficiently and securely.",
+        techStack: [
+            "React", 
+            "Node.js", 
+            "Razorpay", 
+            "Shiprocket", 
+            "Built-in AI Assistant (Genie)", 
+            "Google Analytics"
+        ],
         functionality: [
-            "Quick store setup with staff management and custom domain support",
-            "Comprehensive product management with AI-generated descriptions and stock tracking",
-            "Integrated payments via Razorpay (UPI, cards, net banking) and Cash on Delivery",
-            "Order management, shipping through Shiprocket, and automated email confirmations",
-            "Built-in AI design assistant (Genie) for live layout customization",
-            "Sales dashboard with Google Analytics integration and customer tracking"
+            "Quick Store Setup: Sign up instantly, manage staff permissions, use custom domains, and migrate from Shopify/WooCommerce.",
+            "Comprehensive Product Management: Track stock, offer variants, bundle warranties, and let AI write descriptions and create photos.",
+            "Easy Buying & Payments: Accept UPI, cards, net banking via Razorpay, offer Cash on Delivery, and generate GST-ready bills.",
+            "Order & Customer Handling: Centralized order status tracking, automated confirmation emails, and customer account portals.",
+            "Custom Store Pages: Build trust with customer reviews, blog posts, contact forms, and FAQ pages.",
+            "Look & Feel: Live-editable designs with the Genie AI assistant for instantaneous layout customization.",
+            "Reports & Growth: Advanced sales dashboards integrated with Google Analytics to track visitors and popular products.",
+            "Safe & Reliable: Ensures exact totals, private store information, and a fully custom website capability backed by the Enrixa team."
         ],
         images: [
             "./e0.png",
@@ -187,13 +203,13 @@ window.PROJECTS = [
         thumbnail: "./a1.png",
         description: "The Smart Collection Manager is a robust Shopify application built to automate visual merchandising for e-commerce stores. By leveraging real-time sales data and customizable rules, the app dynamically manages, creates, and sorts collections to maximize conversions. It intelligently promotes bestsellers, highlights new arrivals, and demotes out-of-stock inventory.",
         techStack: [
-            "React 18", 
-            "Shopify Polaris", 
-            "Node.js", 
-            "PostgreSQL (Supabase)", 
-            "Prisma ORM", 
-            "Shopify App Bridge", 
-            "Vite", 
+            "React 18",
+            "Shopify Polaris",
+            "Node.js",
+            "PostgreSQL (Supabase)",
+            "Prisma ORM",
+            "Shopify App Bridge",
+            "Vite",
             "TypeScript"
         ],
         functionality: [
@@ -213,6 +229,43 @@ window.PROJECTS = [
             "./a6.png",
             "./a7.png",
             "./a8.png"
+        ]
+    },
+    {
+        id: "vibrant-patterns-theme",
+        name: "Vibrant Patterns Custom Theme",
+        category: "shopify",
+        thumbnail: "./theme1.jpeg",
+        description: "Vibrant Patterns is a fully custom, modern Shopify theme designed to give merchants absolute control over their brand's presentation across all devices. Built natively on Shopify's Online Store 2.0 architecture, the project focused on creating a highly responsive, aesthetic, and modular experience for e-commerce stores without sacrificing performance. The primary objective was to build a suite of custom sections (Hero Banners, Contact Forms, About Pages, and Collection Grids) that gave merchants independent control over the mobile and desktop experience directly from the Theme Editor, alongside implementing a modern, AJAX-powered cart and filtering system. While this functions as a normal theme out of the box, it serves as a highly extensible framework where we can create limitless further customizations to suit any brand. The development workflow heavily utilized the Shopify CLI, significantly reducing development time and providing a seamless, cost-free local testing environment.",
+        techStack: [
+            "Shopify Liquid",
+            "HTML5",
+            "CSS3",
+            "Vanilla JavaScript",
+            "Shopify CLI",
+            "Theme Access API"
+        ],
+        functionality: [
+            "Advanced Responsive Banner Engine: Developed a custom Liquid schema that allows merchants to decouple desktop and mobile visual assets entirely.",
+            "Independent Image Pickers: Merchants can upload a wide aspect-ratio image for desktop and a separate portrait-oriented image for mobile.",
+            "Dynamic Height Controls: Built-in sliders to set exact pixel heights for desktop (e.g., 400px) and mobile (e.g., 250px) independently.",
+            "Responsive Text Alignment: Independent text alignment settings (Left, Center, Right) for desktop and mobile to ensure readability.",
+            "Custom JSON Templates (OS 2.0): Leveraged Shopify 2.0 JSON templates to allow merchants to easily add, remove, and re-order blocks on static pages.",
+            "AJAX-Powered Collection Filtering: Built a seamless, page-reload-free filtering experience using the Storefront AJAX API.",
+            "Custom Cart Features: Implemented a bespoke cart layout with real-time DOM updates, interactive checkboxes, and a 'Delete All' bulk action function.",
+            "Technical Challenge Overcome: Implemented strict deployment protocols using .shopifyignore to prevent local Shopify CLI sync processes from overwriting live merchant content.",
+            "Limitless Customization & Rapid Workflow: Built as a normal theme foundation but engineered for deep, ongoing custom modifications. Utilized Shopify CLI to ensure a time-efficient, completely free, and streamlined local development process."
+        ],
+        images: [
+            "./theme1.jpeg",
+            "./theme2.jpeg",
+            "./theme3.jpeg",
+            "./theme4.jpeg",
+            "./theme5.jpeg",
+            "./theme6.jpeg",
+            "./theme7.jpeg",
+            "./theme8.jpeg",
+            "./theme9.jpeg"
         ]
     }
 ];
