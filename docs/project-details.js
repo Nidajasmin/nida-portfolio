@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const categoryName = project.category === 'web' ? 'Web App' : 
                          project.category === 'shopify' ? 'Shopify Store' : 
+                         project.category === 'mobile' ? 'Mobile App' : 
                          project.category === 'ai' ? 'AI Project' : project.category;
     document.getElementById('projectCategory').textContent = categoryName.toUpperCase();
     

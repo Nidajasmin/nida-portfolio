@@ -154,6 +154,41 @@ window.PROJECTS = [
         ]
     },
     {
+        id: "enrixa-mobile-app",
+        name: "Enrixa AI - Mobile Product Manager for Shopify",
+        category: "mobile",
+        categories: ["mobile", "shopify"],
+        thumbnail: "./w1.jpeg",
+        description: "Enrixa AI is an intelligent mobile e-commerce application designed for Shopify merchants to streamline product catalog management directly from their smartphones. By combining computer vision, generative AI, and seamless Shopify API integrations, the app enables merchants to publish optimized product listings in minutes rather than hours. Merchants simply snap photos of physical products, while the built-in AI automatically enhances image quality, drafts persuasive SEO descriptions, extracts variants and price points, and syncs directly to their active Shopify store.",
+        techStack: [
+            "Flutter (Dart)",
+            "Shopify Admin API (REST & GraphQL)",
+            "Generative AI & Vision Models",
+            "Computer Vision & Image Enhancement",
+            "Node.js & Express",
+            "PostgreSQL",
+            "Cloud Storage CDN"
+        ],
+        functionality: [
+            "Snap-to-Publish AI Pipeline: Merchants snap quick product photos using the in-app camera scanner, and vision AI immediately generates accurate product titles, comprehensive descriptions, tags, and suggested categories.",
+            "Direct Shopify Store Sync: Seamless integration with Shopify stores allowing 1-tap direct publishing, draft creation, live inventory updates, and collection categorization.",
+            "Catalog & Inventory Dashboard: Real-time mobile dashboard monitoring total products, published status, pending reviews, and AI credit balances.",
+            "Multi-Stage Review Workflow: Granular status sorting ('All', 'Building', 'Needs Review', 'Published') to easily inspect AI-drafted listings and edit pricing before going live.",
+            "Context-Aware Conversational Assistant: In-app AI helper that assists merchants with listing tweaks, pricing troubleshooting, and store configuration in real-time.",
+            "Integrated Video Learning Center: Step-by-step video tutorials for AI photo scanning, mastering draft reviews, and multi-channel store connections (Shopify, WooCommerce, Magento).",
+            "Intelligent Help & FAQ: Dynamic AI-trained FAQ answering merchant questions instantly regarding credits, billing, image storage, and sync protocols."
+        ],
+        images: [
+            "./w1.jpeg",
+            "./w2.jpeg",
+            "./w3.jpeg",
+            "./w4.jpeg",
+            "./w5.jpeg",
+            "./w6.jpeg",
+            "./w7.jpeg"
+        ]
+    },
+    {
         id: "enrixa-store",
         name: "Enrixa Store",
         category: "web",
@@ -282,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderPortfolioItems(category = 'all') {
         const filtered = category === 'all'
             ? window.PROJECTS
-            : window.PROJECTS.filter(item => item.category === category);
+            : window.PROJECTS.filter(item => item.category === category || (item.categories && item.categories.includes(category)));
 
         console.log('Rendering', filtered.length, 'projects for category:', category);
 
